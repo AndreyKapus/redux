@@ -3,7 +3,11 @@ export const NavBar = () => {
         <div>
             <h1>test redux app</h1>
             <div>log in</div>
-            <button type="button">Log in</button>
+            <form>
+                <input type="text" name="login"/>
+                <button type="submit">Log in</button>
+            </form>
+            
         </div>
     )
 }
