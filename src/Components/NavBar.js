@@ -1,16 +1,19 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../Redux/authSlice";
+import UserMenu from "./UserMenu";
 
 export const NavBar = () => {
+    const isLogedIn = useSelector(state => state.user.isLogedIn)
     const dispatch = useDispatch()
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
-        dispatch(login(form.elements.login.value))
+        dispatch(login(form.elements.login.value));
+        form.reset();
     }
     return(
         <div>
-            <h1>test redux app</h1>
+            {isLogedIn && <UserMenu/>}
             <div>log in</div>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="login"/>
