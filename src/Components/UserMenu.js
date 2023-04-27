@@ -1,11 +1,13 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { logout } from "../Redux/authSlice"
 
 export const UserMenu = () => {
+    const dispatch = useDispatch()
     const user = useSelector(state => state.user.login)
     return (
         <div>
-            <div>{user}</div>
-            <button type="button">Log out</button>
+            {user}
+            <button onClick={() => dispatch(logout())}>Log out</button>
         </div>
     )
 }
